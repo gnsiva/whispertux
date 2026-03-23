@@ -1458,8 +1458,10 @@ class WhisperTuxApp:
 
         # List of available models to download
         available_models = [
-            "base.en", "small.en", "medium.en", "large-v3",
-            "base", "small", "medium", "large"
+            "tiny.en", "base.en", "small.en", "medium.en",
+            "tiny", "base", "small", "medium",
+            "large-v2", "large-v3", "large-v3-turbo", "large-v3-turbo-q5_0",
+            "large"
         ]
 
         # Create a custom dialog for model selection
