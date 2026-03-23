@@ -1341,6 +1341,13 @@ class WhisperTuxApp:
             self.waveform_visualizer.stop_animation()
         self._reset_audio_level()
 
+        if transcription == "__TIMEOUT__":
+            self.status_label.config(text="⏱ Timeout transcribing", bootstyle="warning")
+            self.transcription_text.insert(tk.END,
+                "[Timeout transcribing, see ~/.config/whispertux/config.json to increase timeout]\n")
+            self.transcription_text.see(tk.END)
+            return
+
         if transcription and transcription.strip():
             # Filter out blank audio responses from whisper
             cleaned_transcription = transcription.strip()

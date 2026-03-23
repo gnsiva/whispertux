@@ -111,6 +111,8 @@ class WhisperManager:
             # Run whisper.cpp transcription
             transcription = self._run_whisper(temp_wav_path)
             
+            if transcription == "__TIMEOUT__":
+                return "__TIMEOUT__"
             return transcription.strip() if transcription else ""
             
         finally:
@@ -149,11 +151,12 @@ class WhisperManager:
             ]
             
             # Run the command
+            timeout = self.config.get_setting('transcription_timeout', 60)
             result = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
-                timeout=30  # 30 second timeout
+                timeout=timeout
             )
             
             if result.returncode == 0:
@@ -175,7 +178,7 @@ class WhisperManager:
                 
         except subprocess.TimeoutExpired:
             print("Whisper transcription timed out")
-            return ""
+            return "__TIMEOUT__"
         except Exception as e:
             print(f"Error running whisper: {e}")
             return ""
