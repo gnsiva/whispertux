@@ -222,7 +222,7 @@ class WhisperManager:
         available_models = []
         
         # Look for the supported model files
-        supported_models = ['tiny', 'base', 'small', 'medium', 'large']
+        supported_models = ['tiny', 'base', 'small', 'medium', 'large-v2', 'large-v3', 'large-v3-turbo', 'large-v3-turbo-q5_0', 'large']
         
         for model in supported_models:
             # Check for both English-only and multilingual versions
