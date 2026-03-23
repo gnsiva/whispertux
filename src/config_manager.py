@@ -23,7 +23,8 @@ class ConfigManager:
             'always_on_top': True,
             'theme': 'darkly',
             'audio_device': None,  # None means use system default
-            'word_overrides': {}  # Dictionary of word replacements: {"original": "replacement"}
+            'word_overrides': {},  # Dictionary of word replacements: {"original": "replacement"}
+            'transcription_timeout': 60  # Seconds before whisper.cpp subprocess is killed
         }
         
         # Set up config directory and file path
